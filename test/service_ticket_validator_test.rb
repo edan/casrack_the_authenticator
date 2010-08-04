@@ -19,6 +19,7 @@ class ServiceTicketValidatorTest < Test::Unit::TestCase
         @response = Object.new
         @body = Object.new
         Net::HTTP.stubs(:new).returns(@server)
+        @server.stubs(:use_ssl=).returns(true)
         @server.stubs(:start).yields(@connection)
         @connection.stubs(:get).returns(@response)
         @response.stubs(:body).returns(@body)
